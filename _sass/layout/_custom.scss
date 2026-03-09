@@ -42,9 +42,66 @@
   margin: 0.25rem 0 0.5rem;
 }
 
+
+/* ===========================
+   ICON LINKS (Academicons/FA)
+   =========================== */
+
+.team-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  align-items: center;
+}
+
+/* Icon-button anchors */
 .team-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.15rem;
+  height: 2.15rem;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: rgba(0,0,0,0.02);
+
+  color: inherit;
   text-decoration: none;
+
+  transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
 }
+
+/* Make both Academicons and Font Awesome icons size consistently */
+.team-links a .ai,
+.team-links a .fa,
+.team-links a .fab,
+.team-links a .fas,
+.team-links a .far {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* Hover/focus states */
 .team-links a:hover {
-  text-decoration: underline;
+  transform: translateY(-1px);
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.28);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
+
+/* Keyboard accessibility */
+.team-links a:focus-visible {
+  outline: 2px solid rgba(0, 102, 204, 0.65);
+  outline-offset: 2px;
+}
+
+/* Optional: brand-ish colors (customize as you like) */
+.team-links .ai-orcid,
+.team-links .ai-orcid-square { color: #a6ce39; } /* ORCID green */
+.team-links .ai-google-scholar,
+.team-links .ai-google-scholar-square { color: #4285f4; } /* Google blue */
+.team-links .fa-github,
+.team-links .fab.fa-github { color: #111; }
