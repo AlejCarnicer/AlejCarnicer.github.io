@@ -9,36 +9,26 @@
     <p class="team-bio">{{ include.member.bio }}</p>
 
     {% if include.member.links %}
-
-    <div class="team-links">
-      {% if member.links.email %}
-        <a href="mailto:{{ member.links.email }}" aria-label="Email {{ member.name }}">
-          <i class="fas fa-envelope"></i>
-          <span class="sr-only">Email</span>
-        </a>
-      {% endif %}
-
-      {% if member.links.github %}
-        <a href="{{ member.links.github }}" target="_blank" rel="noopener" aria-label="GitHub {{ member.name }}">
-          <i class="fab fa-github"></i>
-          <span class="sr-only">GitHub</span>
-        </a>
-      {% endif %}
-
-      {% if member.links.orcid %}
-        <a href="{{ member.links.orcid }}" target="_blank" rel="noopener" aria-label="ORCID {{ member.name }}">
-          <i class="ai ai-orcid"></i>
-          <span class="sr-only">ORCID</span>
-        </a>
-      {% endif %}
-
-      {% if member.links.scholar %}
-        <a href="{{ member.links.scholar }}" target="_blank" rel="noopener" aria-label="Google Scholar {{ member.name }}">
-          <i class="ai ai-google-scholar"></i>
-          <span class="sr-only">Google Scholar</span>
-        </a>
-      {% endif %}
-
+      <p class="team-links">
+        {% if include.member.links.email %}
+          <a href="mailto:{{ include.member.links.email }}">Email</a>
+        {% endif %}
+        {% if include.member.links.website %}
+          {% if include.member.links.email %} · {% endif %}
+          <a href="{{ include.member.links.website }}" target="_blank" rel="noopener">Website</a>
+        {% endif %}
+        {% if include.member.links.scholar %}
+          {% if include.member.links.email or include.member.links.website %} · {% endif %}
+          <a href="{{ include.member.links.scholar }}" target="_blank" rel="noopener">Scholar</a>
+        {% endif %}
+        {% if include.member.links.github %}
+          {% if include.member.links.email or include.member.links.website or include.member.links.scholar %} · {% endif %}
+          <a href="{{ include.member.links.github }}" target="_blank" rel="noopener">GitHub</a>
+        {% endif %}
+        {% if include.member.links.linkedin %}
+          {% if include.member.links.email or include.member.links.website or include.member.links.scholar or include.member.links.github %} · {% endif %}
+          <a href="{{ include.member.links.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        {% endif %}
       </p>
     {% endif %}
   </div>
