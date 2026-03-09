@@ -105,3 +105,23 @@
 .team-links .ai-google-scholar-square { color: #4285f4; } /* Google blue */
 .team-links .fa-github,
 .team-links .fab.fa-github { color: #111; }
+
+
+/* Optional: slightly dim icons that are “missing”/empty links */
+.team-links a[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Screen-reader only helper (if your theme doesn't already provide one) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
