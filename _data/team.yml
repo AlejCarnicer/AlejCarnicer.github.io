@@ -3,7 +3,7 @@
 pi:
   - name: "Prof. Alejandro Carnicer Lombarte"
     title: "Principal Investigator"
-    photo: "/images/CarnicerLombarte Alejandro.png"
+    photo: "/images/team/600_CarnLomb_A.png"
     bio: "Assistant Professor at CityU. Neural implants and biohybrid regenerative interfaces."
     links:
       email: "name@university.edu"
@@ -12,16 +12,23 @@ pi:
 
 staff:
   - name: "Dr. Jane Doe"
-    title: "Research Scientist"
-    photo: "/images/CarnicerLombarte Alejandro.png"
+    title: "Postdoctoral researcher"
+    photo: "/images/team/600_CarnLomb_A.png"
     bio: "Electrochemistry and neural interface characterization."
     links:
       linkedin: "https://linkedin.com/in/..."
 
+  - name: "Dr. Jane Doe electric boogaloo"
+    title: "Postdoctoral researcher"
+    photo: "/images/team/600_CarnLomb_A.png"
+    bio: "Electrochemistry and neural interface characterization."
+    links:
+      scholar: "https://scholar.google.com/..."
+
 students:
   - name: "John Smith"
     title: "PhD Student"
-    photo: "/images/CarnicerLombarte Alejandro.png"
+    photo: "/images/team/600_CarnLomb_A.png"
     bio: "Microfabrication of parylene-based multichannel implants."
     links:
       website: "https://..."
