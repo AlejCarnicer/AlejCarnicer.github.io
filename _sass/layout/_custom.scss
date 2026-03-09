@@ -7,7 +7,7 @@
 
 .team-card {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 1fr; /*adding multiple items here e.g. 200px 1fr, allows for multiple slots per row*/
   gap: 1rem;
   padding: 1rem;
   border: 1px solid rgb(187, 187, 187);
