@@ -18,6 +18,13 @@ staff:
     links:
       linkedin: "https://linkedin.com/in/..."
 
+  - name: "Dr. Jane Doe2"
+    title: "Postdoctoral researcher"
+    photo: "/images/team/600_CarnLomb_A.png"
+    bio: "Electrochemistry and neural interface characterization."
+    links:
+      scholar: "https://scholar.google.com/..."
+
   - name: "Dr. Jane Doe"
     title: "Postdoctoral researcher"
     photo: "/images/team/600_CarnLomb_A.png"
