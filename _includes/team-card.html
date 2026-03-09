@@ -11,23 +11,59 @@
     {% if include.member.links %}
       <p class="team-links">
         {% if include.member.links.email %}
-          <a href="mailto:{{ include.member.links.email }}">Email</a>
+          <a href="mailto:{{ include.member.links.email }}"
+             aria-label="Email {{ include.member.name }}"
+             title="Email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
         {% endif %}
+
         {% if include.member.links.website %}
-          {% if include.member.links.email %} · {% endif %}
-          <a href="{{ include.member.links.website }}" target="_blank" rel="noopener">Website</a>
+          <a href="{{ include.member.links.website }}"
+             target="_blank" rel="noopener"
+             aria-label="{{ include.member.name }} website"
+             title="Website">
+            <i class="fas fa-link" aria-hidden="true"></i>
+          </a>
         {% endif %}
+
         {% if include.member.links.scholar %}
-          {% if include.member.links.email or include.member.links.website %} · {% endif %}
-          <a href="{{ include.member.links.scholar }}" target="_blank" rel="noopener">Scholar</a>
+          <a href="{{ include.member.links.scholar }}"
+             target="_blank" rel="noopener"
+             aria-label="{{ include.member.name }} Google Scholar"
+             title="Google Scholar">
+            <i class="ai ai-google-scholar" aria-hidden="true"></i>
+          </a>
         {% endif %}
+
+        {%- comment -%}
+        Optional ORCID support if you add `orcid:` under links in your data.
+        {%- endcomment -%}
+        {% if include.member.links.orcid %}
+          <a href="{{ include.member.links.orcid }}"
+             target="_blank" rel="noopener"
+             aria-label="{{ include.member.name }} ORCID"
+             title="ORCID">
+            <i class="ai ai-orcid" aria-hidden="true"></i>
+          </a>
+        {% endif %}
+
         {% if include.member.links.github %}
-          {% if include.member.links.email or include.member.links.website or include.member.links.scholar %} · {% endif %}
-          <a href="{{ include.member.links.github }}" target="_blank" rel="noopener">GitHub</a>
+          <a href="{{ include.member.links.github }}"
+             target="_blank" rel="noopener"
+             aria-label="{{ include.member.name }} GitHub"
+             title="GitHub">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
         {% endif %}
+
         {% if include.member.links.linkedin %}
-          {% if include.member.links.email or include.member.links.website or include.member.links.scholar or include.member.links.github %} · {% endif %}
-          <a href="{{ include.member.links.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="{{ include.member.links.linkedin }}"
+             target="_blank" rel="noopener"
+             aria-label="{{ include.member.name }} LinkedIn"
+             title="LinkedIn">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
         {% endif %}
       </p>
     {% endif %}
