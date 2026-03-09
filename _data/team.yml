@@ -6,9 +6,9 @@ pi:
     photo: "/images/team/600_CarnLomb_A.png"
     bio: "Assistant Professor at CityU. Neural implants and biohybrid regenerative interfaces."
     links:
-      email: "name@university.edu"
-      scholar: "https://scholar.google.com/..."
-      github: "https://github.com/..."
+      email: "acarnice@cityu.edu.hk"
+      scholar: "https://scholar.google.com/citations?user=whp18l0AAAAJ&hl=en"
+      linkedin: "https://www.linkedin.com/in/alejandro-carnicer-lombarte-39a066111/"
 
 staff:
   - name: "Dr. Jane Doe"
@@ -18,7 +18,7 @@ staff:
     links:
       linkedin: "https://linkedin.com/in/..."
 
-  - name: "Dr. Jane Doe electric boogaloo"
+  - name: "Dr. Jane Doe"
     title: "Postdoctoral researcher"
     photo: "/images/team/600_CarnLomb_A.png"
     bio: "Electrochemistry and neural interface characterization."

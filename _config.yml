@@ -27,8 +27,8 @@ author:
   name             : "Alejandro Carnicer-Lombarte"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
-  location         : "AEarth"
-  employer         : "Red Brick University"
+  location         : 
+  employer         : 
   uri              : # URL
   email            : "acarnice@cityu.edu.hk" 
 
