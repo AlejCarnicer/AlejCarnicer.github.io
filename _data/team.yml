@@ -1,33 +1,27 @@
+# _data/team.yml
+
 pi:
-  - name: Prof. Alejandro Carnicer Lombarte
-    role: Assistant Professor
-    photo: /images/CarnicerLombarte Alejandro.png
-    bio: >
-      We develop implantable neural technologies and regenerative biohybrid devices
-      for peripheral nerve interfaces and long-term electrophysiology.
-    email: your.email@university.edu
-    website: https://your-lab-site-or-personal-site
-    scholar: https://scholar.google.com/citations?user=XXXX
-    orcid: https://orcid.org/0000-0000-0000-0000
-    github: https://github.com/yourhandle
-    order: 1
+  - name: "Prof. Alejandro Carnicer Lombarte"
+    title: "Principal Investigator"
+    photo: "/images/CarnicerLombarte Alejandro.png"
+    bio: "Assistant Professor at CityU. Neural implants and biohybrid regenerative interfaces."
+    links:
+      email: "name@university.edu"
+      scholar: "https://scholar.google.com/..."
+      github: "https://github.com/..."
 
 staff:
-  - name: Dr. Jane Doe
-    role: Postdoctoral Researcher
-    photo: /images/CarnicerLombarte Alejandro.png
-    bio: >
-      Bioelectronics fabrication and impedance spectroscopy; chronic in vivo
-      electrophysiology in rodent models.
-    website: https://example.com
-    order: 1
+  - name: "Dr. Jane Doe"
+    title: "Research Scientist"
+    photo: "/images/CarnicerLombarte Alejandro.png"
+    bio: "Electrochemistry and neural interface characterization."
+    links:
+      linkedin: "https://linkedin.com/in/..."
 
 students:
-  - name: John Smith
-    role: PhD Student
-    photo: /images/CarnicerLombarte Alejandro.png
-    bio: >
-      Focused on microfabrication of compartmentalized neural interfaces and
-      soft encapsulation materials.
-    github: https://github.com/johnsmith
-    order: 1
+  - name: "John Smith"
+    title: "PhD Student"
+    photo: "/images/CarnicerLombarte Alejandro.png"
+    bio: "Microfabrication of parylene-based multichannel implants."
+    links:
+      website: "https://..."

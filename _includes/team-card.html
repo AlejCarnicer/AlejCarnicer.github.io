@@ -1,0 +1,35 @@
+<div class="team-card">
+  <div class="team-photo-wrap">
+    <img class="team-photo" src="{{ include.member.photo | relative_url }}" alt="{{ include.member.name }}">
+  </div>
+
+  <div class="team-info">
+    <h3 class="team-name">{{ include.member.name }}</h3>
+    <p class="team-title">{{ include.member.title }}</p>
+    <p class="team-bio">{{ include.member.bio }}</p>
+
+    {% if include.member.links %}
+      <p class="team-links">
+        {% if include.member.links.email %}
+          <a href="mailto:{{ include.member.links.email }}">Email</a>
+        {% endif %}
+        {% if include.member.links.website %}
+          {% if include.member.links.email %} · {% endif %}
+          <a href="{{ include.member.links.website }}" target="_blank" rel="noopener">Website</a>
+        {% endif %}
+        {% if include.member.links.scholar %}
+          {% if include.member.links.email or include.member.links.website %} · {% endif %}
+          <a href="{{ include.member.links.scholar }}" target="_blank" rel="noopener">Scholar</a>
+        {% endif %}
+        {% if include.member.links.github %}
+          {% if include.member.links.email or include.member.links.website or include.member.links.scholar %} · {% endif %}
+          <a href="{{ include.member.links.github }}" target="_blank" rel="noopener">GitHub</a>
+        {% endif %}
+        {% if include.member.links.linkedin %}
+          {% if include.member.links.email or include.member.links.website or include.member.links.scholar or include.member.links.github %} · {% endif %}
+          <a href="{{ include.member.links.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        {% endif %}
+      </p>
+    {% endif %}
+  </div>
+</div>
