@@ -18,31 +18,143 @@ layout: default
   {% include sidebar.html %}
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
-    {% if page.modified %}<meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">{% endif %}
+    {% if page.title %}
+      <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
+    {% endif %}
+    {% if page.excerpt %}
+      <meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">
+    {% endif %}
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
-          {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
-          {% if page.read_time %}
-            <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
+          {% if page.title %}
+            <h1 class="page__title" itemprop="headline">
+              {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+            </h1>
           {% endif %}
-        {% if page.modified %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
-        {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
-        {% endif %}
-        {% if page.talk_type %}<p>{{page.talk_type}} at {{ page.venue }},  {{page.location}} {% endif %}
-
         </header>
       {% endunless %}
 
       <section class="page__content" itemprop="text">
+
+        {%- comment -%}
+        Optional intro text comes from the Team page Markdown content.
+        {%- endcomment -%}
         {{ content }}
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+
+        {%- comment -%}
+        Data-driven Team rendering.
+        Create _data/team.yml with keys: pi, staff, students.
+        {%- endcomment -%}
+
+        {% assign team = site.data.team %}
+
+        {% if team %}
+          {% assign section_order = "pi,staff,students" | split: "," %}
+          {% for section_key in section_order %}
+            {% assign members = team[section_key] %}
+
+            {% if members and members.size > 0 %}
+              {% case section_key %}
+                {% when "pi" %}{% assign section_title = "Principal Investigator" %}
+                {% when "staff" %}{% assign section_title = "Staff" %}
+                {% when "students" %}{% assign section_title = "Students" %}
+                {% else %}{% assign section_title = section_key | capitalize %}
+              {% endcase %}
+
+              <h2 class="archive__subtitle">{{ section_title }}</h2>
+
+              <div class="grid__wrapper">
+                {%- comment -%}
+                Sort logic:
+                - If you set "order" in team.yml, it will sort by that.
+                - Otherwise it sorts by name.
+                {%- endcomment -%}
+                {% assign has_order = false %}
+                {% for m in members %}
+                  {% if m.order != nil %}
+                    {% assign has_order = true %}
+                  {% endif %}
+                {% endfor %}
+
+                {% if has_order %}
+                  {% assign members_sorted = members | sort: "order" %}
+                {% else %}
+                  {% assign members_sorted = members | sort: "name" %}
+                {% endif %}
+
+                {% for member in members_sorted %}
+                  <div class="archive__item team-card">
+                    <div class="archive__item-teaser team-photo">
+                      {% if member.photo %}
+                        <img src="{{ member.photo | relative_url }}" alt="{{ member.name | escape_once }}">
+                      {% else %}
+                        <img src="{{ '/images/team/placeholder.jpg' | relative_url }}" alt="{{ member.name | escape_once }}">
+                      {% endif %}
+                    </div>
+
+                    <div class="archive__item-body team-body">
+                      <h3 class="archive__item-title team-name">
+                        {{ member.name }}
+                      </h3>
+
+                      {% if member.role %}
+                        <p class="team-role"><strong>{{ member.role }}</strong></p>
+                      {% endif %}
+
+                      {% if member.bio %}
+                        <p class="team-bio">{{ member.bio }}</p>
+                      {% endif %}
+
+                      {%- comment -%}
+                      Links: only show what exists.
+                      (FontAwesome is commonly available in this template.)
+                      {%- endcomment -%}
+                      <p class="team-links">
+                        {% if member.email %}
+                          <a href="mailto:{{ member.email }}"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
+                        {% endif %}
+
+                        {% if member.website %}
+                          {% if member.email %} &nbsp;·&nbsp; {% endif %}
+                          <a href="{{ member.website }}" target="_blank" rel="noopener">
+                            <i class="fa fa-link" aria-hidden="true"></i> Website
+                          </a>
+                        {% endif %}
+
+                        {% if member.scholar %}
+                          {% if member.email or member.website %} &nbsp;·&nbsp; {% endif %}
+                          <a href="{{ member.scholar }}" target="_blank" rel="noopener">
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholar
+                          </a>
+                        {% endif %}
+
+                        {% if member.orcid %}
+                          {% if member.email or member.website or member.scholar %} &nbsp;·&nbsp; {% endif %}
+                          <a href="{{ member.orcid }}" target="_blank" rel="noopener">
+                            <i class="fa fa-id-badge" aria-hidden="true"></i> ORCID
+                          </a>
+                        {% endif %}
+
+                        {% if member.github %}
+                          {% if member.email or member.website or member.scholar or member.orcid %} &nbsp;·&nbsp; {% endif %}
+                          <a href="{{ member.github }}" target="_blank" rel="noopener">
+                            <i class="fa fa-github" aria-hidden="true"></i> GitHub
+                          </a>
+                        {% endif %}
+                      </p>
+
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <p><em>No team data found.</em> Add a file at <code>_data/team.yml</code>.</p>
+        {% endif %}
+
       </section>
 
       <footer class="page__meta">
@@ -61,18 +173,4 @@ layout: default
       {% include comments.html %}
     {% endif %}
   </article>
-
-  {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
-  {% if page.id and page.related and site.related_posts.size > 0 %}
-    <div class="page__related">
-      {% if site.data.ui-text[site.locale].related_label %}
-        <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
-      {% endif %}
-      <div class="grid__wrapper">
-        {% for post in site.related_posts limit:4 %}
-          {% include archive-single.html type="grid" %}
-        {% endfor %}
-      </div>
-    </div>
-  {% endif %}
 </div>
