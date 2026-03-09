@@ -7,7 +7,7 @@
 
 .team-card {
   display: grid;
-  grid-template-columns: 88px 1fr;
+  grid-template-columns: 200px 1fr;
   gap: 1rem;
   padding: 1rem;
   border: 1px solid rgb(187, 187, 187);
@@ -16,8 +16,8 @@
 }
 
 .team-photo-wrap {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   overflow: hidden;
   background: rgba(0,0,0,0.03);
 }
